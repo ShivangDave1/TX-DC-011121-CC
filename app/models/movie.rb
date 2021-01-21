@@ -18,13 +18,17 @@ class Movie
   end
 
   def reviewers
-    #array of all viewers who have reviewed the movie
+    # array of all viewers who have reviewed the movie
     return self.reviews.collect { |review| review.viewer }.uniq
   end
 
   def average_rating
     # average of all ratings 
-    ## self.reviews.reduce and self.reviews.count
+    total_rating_points = self.reviews.collect { |review| review.rating }.reduce(:+)
+    total_ratings = self.reviews.count
+
+    return total_rating_points / total_ratings
+    #return self.reviews.collect { |review| review.rating }.reduce(:+) / self.reviews.count
   end
 
   def self.all
@@ -32,8 +36,8 @@ class Movie
   end
 
   def self.highest_rated
-    #movie with highest average rating
-    ## self.all.max_by ??
+    # movie with highest average rating
+    return self.all.max_by { |movie| movie.average_rating }
   end
 
 end
