@@ -19,7 +19,7 @@ class Movie
 
   def reviewers
     #array of all viewers who have reviewed the movie
-    return self.reviews.collect { |review| review.viewers }.uniq
+    return self.reviews.collect { |review| review.viewer }.uniq
   end
 
   def self.all

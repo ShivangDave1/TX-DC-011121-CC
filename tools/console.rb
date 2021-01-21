@@ -30,5 +30,5 @@ review_eight = Review.new(jacob, braveheart, 9)
 
 
 # ===== WARNING! DO NOT EDIT BELOW THIS LINE ===== #
-#binding.pry
+binding.pry
 0
