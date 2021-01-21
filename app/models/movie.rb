@@ -22,8 +22,18 @@ class Movie
     return self.reviews.collect { |review| review.viewer }.uniq
   end
 
+  def average_rating
+    # average of all ratings 
+    ## self.reviews.reduce and self.reviews.count
+  end
+
   def self.all
     @@all
+  end
+
+  def self.highest_rated
+    #movie with highest average rating
+    ## self.all.max_by ??
   end
 
 end
