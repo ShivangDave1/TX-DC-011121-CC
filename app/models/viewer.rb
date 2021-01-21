@@ -14,11 +14,13 @@ class Viewer
 
   def reviews
     #array of reviews for this viewer
+    return Review.all.select { |review| review.viewer == self }
   end
 
   def reviewed_movies
     #array of movies reviewed
     ##use self.reviews?
+    return self.reviews.collect { |review| review.movie }.uniq
   end
 
   def self.all

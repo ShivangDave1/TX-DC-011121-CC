@@ -14,10 +14,12 @@ class Movie
 
   def reviews
     # array of all reviews for movie
+    return Review.all.select { |review| review.movie == self }
   end
 
   def reviewers
     #array of all viewers who have reviewed the movie
+    return self.reviews.collect { |review| review.viewers }.uniq
   end
 
   def self.all
