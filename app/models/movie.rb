@@ -38,6 +38,10 @@ class Movie
   def self.highest_rated
     # movie with highest average rating
     return self.all.max_by { |movie| movie.average_rating }
+    
+    # Could also do below if you want to account for ties...
+    # highest_score = self.all.max_by { |movie| movie.average_rating}.average_rating
+    # return self.all.find_all { |movie| movie.average_rating == highest_score }
   end
 
 end
