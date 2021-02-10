@@ -1,0 +1,16 @@
+<h1>New Appearance</h1>
+
+<%= form_with model: @appearance do |form| %>
+
+    <%= form.label :guest_id, "Select a Guest" %>
+    <%= form.collection_select :guest_id, Guest.order(:name), :id, :name %>
+
+    <%= form.label :episode_id, "Select a Episode" %>
+    <%= form.collection_select :episode_id, Episode.order(:number), :id, :date %>
+
+    <%= form.label :rating, "Rate the Appearance (1-5)" %>
+    <%= form.number_field :rating, in: 1..5 %>
+
+    <%= form.submit %>
+
+<% end %>
