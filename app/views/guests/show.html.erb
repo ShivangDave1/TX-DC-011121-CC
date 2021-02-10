@@ -1,0 +1,20 @@
+<h1><%= @guest.name %></h1>
+
+<h2>Appearances</h2>
+
+<ul class="episodes-list">
+
+<% @guest.episodes.each do |episode| %>
+
+    <div class="episode-details">
+
+        <li><h4 class="episode-title"><%= "Episode No. #{episode.number}" %></h4></li>
+        <ul>
+            <li>Date: <%= link_to episode.date, episode_path(episode) %></li>
+            <li>Appearance Rating: <%= Appearance.where(guest_id: @guest.id, episode_id: episode.id).first.rating %></li>
+
+    </div>
+
+<% end %>
+
+</ul>
