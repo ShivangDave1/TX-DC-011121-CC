@@ -13,15 +13,15 @@
 ActiveRecord::Schema.define(version: 20170309163029) do
 
   create_table "episodes", force: :cascade do |t|
-    t.date     "date"
-    t.integer  "number"
+    t.date "date"
+    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "guests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "occupation"
+    t.string "name"
+    t.string "occupation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
