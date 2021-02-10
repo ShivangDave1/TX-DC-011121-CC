@@ -1,0 +1,16 @@
+<% if flash[:errors] %>
+    <h3> Errors </h3>
+<% flash[:errors].each do|err| %>
+    <li><%= err %></li>
+    <% end %>
+<%end%>
+
+
+<h1> New Appearance </h1>
+
+<%= form_for @appearance do |f| %>
+   Guest: <%= f.collection_select :guest_id, Guest.all, :id, :name %> 
+   Episode: <%= f.collection_select :episode_id, Episode.all, :id, :number %><br /></br>
+   Rating: <%= f.text_field :rating, :placeholder => "Input Your Rating" %><br /><br>
+    <%= f.submit %>
+  <% end %>
