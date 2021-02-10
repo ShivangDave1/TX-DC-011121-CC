@@ -1,0 +1,12 @@
+
+<h1><%= @episode.date %></h1>
+<h3>Average Rating: <%= @episode.average_rating %></h3>
+<h3>Guests:</h3>
+
+<ul>
+    <% @episode.guests.each do |e| %>
+        <li><%= link_to e.name, guest_path(e.id) %></li>
+
+        Rating: <%= @episode.appearances.find_by(:episode_id == e.id).rating %>
+    <% end %>
+</ul>
