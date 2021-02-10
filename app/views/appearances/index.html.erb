@@ -1,0 +1,11 @@
+<h1> All Appearances </h1>
+<ul>
+<%@appearances.map { |app| %>
+<li>
+<%= "#{app.guest.name} had a #{app.rating} rated appearance in Episode #{app.episode.number}" %> 
+<%}%>
+</li>
+</ul>
+<pre>
+<%=button_tag link_to "Create a new Appearance", new_appearance_path %>
+</pre>

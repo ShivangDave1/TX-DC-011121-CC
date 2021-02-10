@@ -1,0 +1,29 @@
+<h2> New Appearance </h2>
+
+<% if flash.alert %>
+<ul>
+    <% flash.alert. map { |err| %>
+    <li>
+    <%= err %>
+    </li>
+    <% } %> 
+</ul>
+<br> <br>
+<% end %>
+
+
+<%= form_with model: @appearance do |form| %>
+<%= label_tag :guest, "Choose a Guest" %>
+<br>
+<%=form.select :guest_id, options_from_collection_for_select(Guest.all, "id", "name") %>
+<br> <br>
+<%= label_tag :episode, "Choose an Episode" %>
+<br>
+<%= form.select :episode_id, options_from_collection_for_select(Episode.all, "id", "number") %>
+<br> <br>
+<%= label_tag :rating, "Rate the appearance" %>
+<br>
+<%=form.text_field :rating, placeholder: "Enter a Number" %>
+<br> <br>
+<%= submit_tag "Submit" %>
+<% end %>

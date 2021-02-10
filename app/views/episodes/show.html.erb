@@ -1,0 +1,27 @@
+<h2><%="Episode #{@episode.number}" %> </h2>
+
+<div>Average Rating:</div>
+<% if !@episode.appearances.empty? %>
+    <%= (@episode.appearances.inject(0) { |i, app| %>
+        <% app.rating + i %>
+    <% } / @episode.appearances.count).round(3) %>
+<% else %>
+<%= "No rating yet" %>
+<% end %>
+
+<dl>
+    <dt>Date:</dt>
+    <dd><%=@episode.date%></dd>
+</dl>
+<dl>
+    <dt>Guests:</dt>
+    <ul>
+    <% @episode.guests.map { |guest| %>
+    <li>
+    <%= link_to guest.name, guest %>
+    </li>
+    <% } %>
+    </ul>
+</dl>
+
+

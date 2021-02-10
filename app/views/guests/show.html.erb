@@ -1,0 +1,13 @@
+<h2><%=@guest.name%></h2>
+
+<dl>
+    <dt>Appearances</dt>
+    <ul>
+    <% @guest.appearances.sort_by{|app| app.rating}.reverse.map { |app| %>
+    <li>
+    <%= "Episode #{app.episode.number},"%> <%=link_to "#{app.episode.date};", app.episode%> 
+    <%=" Rating: #{app.rating}"%>
+    </li>
+    <% } %>
+    </ul>
+</dl>
