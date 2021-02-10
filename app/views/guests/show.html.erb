@@ -4,14 +4,14 @@
 
 <ul class="episodes-list">
 
-<% @guest.episodes.each do |episode| %>
+<% @appearances.each do |appearance| %>
 
     <div class="episode-details">
 
-        <li><h4 class="episode-title"><%= "Episode No. #{episode.number}" %></h4></li>
+        <li><h4 class="episode-title"><%= "Episode No. #{appearance.episode.number}" %></h4></li>
         <ul>
-            <li>Date: <%= link_to episode.date, episode_path(episode) %></li>
-            <li>Appearance Rating: <%= Appearance.where(guest_id: @guest.id, episode_id: episode.id).first.rating %></li>
+            <li>Date: <%= link_to appearance.episode.date, episode_path(appearance.episode) %></li>
+            <li>Appearance Rating: <%= appearance.rating %></li>
 
     </div>
 

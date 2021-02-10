@@ -6,6 +6,7 @@ class GuestsController < ApplicationController
 
   def show
     @guest = Guest.find_by(id: params[:id])
+    @appearances = @guest.appearances_by_rating
   end
   
 end
