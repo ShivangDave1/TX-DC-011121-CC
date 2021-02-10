@@ -1,0 +1,19 @@
+<h2>Guest Information</h2>
+
+<p><%= @guest.name %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Episode Date</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    </tbody>
+        <tr>
+          <% @guest.episodes.each do |e| %>
+            <td><%= link_to "#{e.date}", episode_path(e) %></td>
+            <td><%= e.appearances.find_by(guest_id: @guest.id).rating %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

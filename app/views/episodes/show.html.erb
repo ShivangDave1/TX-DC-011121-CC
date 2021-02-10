@@ -1,0 +1,12 @@
+<h2>Episode Information</h2>
+
+<p><%= @episode.date.strftime("%B %d, %Y") %></p>
+
+<p>Guests:</p>
+<ul>
+    <% @episode.guests.each do |g| %>
+        <li><%= link_to g.name, guest_path(g) %></li>
+    <% end %>
+</ul>
+<p>Average rating:</p>
+<%= @episode.appearances.sum {|a| a.rating } / @episode.appearances.count.to_f %>

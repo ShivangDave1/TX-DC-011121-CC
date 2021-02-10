@@ -1,0 +1,8 @@
+<h1>All Appearances</h1>
+
+<ul><% @appearances.each do |a| %>
+    <li><%= a.guest.name %> - Episode: <%= a.episode.number %> - Rating: <%= a.rating %></li>
+    <% end %>
+</ul>
+
+<p><%= link_to "Make a new appearance", new_appearance_path %></p>
