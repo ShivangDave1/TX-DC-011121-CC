@@ -10,5 +10,5 @@ class Episode < ApplicationRecord
         ans = temp/self.appearances.size
         return ans
     end
-
+    
 end
