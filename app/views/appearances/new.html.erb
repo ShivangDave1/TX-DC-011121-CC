@@ -1,0 +1,18 @@
+<% if flash[:errors] %>
+<h3> ERRORS: </h3>
+<% flash[:errors].each do |e| %>
+    <%= e %>
+<% end %>
+<% end %>
+
+
+
+<h1> Create an Appearance </h1>
+
+<%= form_with model: @appearance do |f| %>
+    
+    Guest : <%= f.collection_select :guest_id, Guest.all, :id, :name %><br><br>
+    Episode : <%= f.collection_select :episode_id, Episode.all, :id, :date %><br><br>
+    Rating : <%= f.text_field :rating  %><br><br>
+    <%= f.submit %><br>
+  <% end %>

@@ -1,0 +1,20 @@
+<h1><%= @guest.name %></h1>
+
+
+
+<h3> This guest has appeared on: </h3>
+
+
+<% @guest.episodes.each do |episode| %>
+    <ol>
+    Dates: <%= link_to episode.date, episode_path(episode) %> <br> 
+    Ratings : <% @guest.appearances.each do |ap| %>
+    
+        <%= ap.rating %> 
+    
+        <% end %>
+
+    </ol>
+    <% end %>
+
+   

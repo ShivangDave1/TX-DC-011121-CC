@@ -1,0 +1,11 @@
+<h1> I love this episode too!</h1>
+
+<h3><%= @episode.date %> </h3>
+
+<% @episode.guests.each do |guest| %>
+    <li>
+    <%= link_to guest.name, guest_path(guest) %> 
+    </li>
+    <% end %> 
+
+ 
