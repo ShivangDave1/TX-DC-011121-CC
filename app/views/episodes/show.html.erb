@@ -3,6 +3,9 @@
 <h2>Date</h2>
 <%= @episode.date %>
 
+<h2>Average Appearance Rating</h2>
+<%= @episode.appearances.average(:rating) %>
+
 <h2>Guests</h2>
 
 <ul class="guests-list">
