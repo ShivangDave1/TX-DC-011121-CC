@@ -1,0 +1,8 @@
+<h1><%= @episode.id %></h1>
+<label>Air Date:</label>
+<p><%= @episode.date %></p>
+<br>
+<label>Guests:</label>
+<% @episode.appearance.each do |appear| %>
+    <li><%= link_to appear.guest.name, episode_path(episode) %></li>
+<% end %>

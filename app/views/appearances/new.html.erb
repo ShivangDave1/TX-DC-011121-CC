@@ -1,0 +1,15 @@
+<% if flash[:errors] %>
+    <h3> Errors: </h3>
+    <% flash[:errors].each do |err| %>
+        <li> <%= err %> </li>
+    <% end %>
+<% end %>
+
+<h1>New Appearances</h1>
+<%= form_with model: @appearance do |appear| %>
+
+    <%= appear.collection_select :guest_id, Guest.all, :id, :name %>
+    <%= appear.collection_select :episode_id, Episode.all, :id, :number %>
+    <%= appear.text_field :rating, :placeholder => "Input Rating" %>
+    <%= appear.submit %>
+<% end %>
