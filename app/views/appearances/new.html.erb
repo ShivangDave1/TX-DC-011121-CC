@@ -1,0 +1,18 @@
+<h1>New Appearence Form</h1><br>
+
+<% if flash[:errors] %>
+    <h2>Errors:</h2>
+    <% flash[:errors].each do |err| %>
+        <%= err %><br><br>
+    <% end %>
+<% end %>
+
+<%= form_with model: @appearance do |f| %><br>
+    Guest: <%= f.collection_select :guest_id, Guest.all, :id, :name %><br>
+    Episode: <%= f.collection_select :episode_id, Episode.all, :id, :number %><br>
+    Rating: <%= f.text_field :rating %><br>
+    <%= f.submit %><br>
+<% end %><br>
+
+<%= link_to 'All Guest', guests_path %><br>
+<%= link_to 'All Episodes', episodes_path %>

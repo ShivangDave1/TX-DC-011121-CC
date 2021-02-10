@@ -1,0 +1,22 @@
+<h1>Episode</h1>
+
+Episode Date: <%= @episode.date %>
+<% average = 0.0 %>
+<ul>
+    <% @episode.appearances.each do |appear| %>
+    <li>
+        Guests: <%= link_to appear.guest.name, guest_path(appear.guest.id) %>
+        Rating: <%= appear.rating %>
+        <% average += appear.rating %>
+    </li>
+    <% end %>
+</ul>
+
+<%if !@episode.appearances.empty?%>
+    <% ans = average/@episode.appearances.size %>
+    Average Rating: <%= ans %><br><br>
+<% end %>
+
+
+
+<%= link_to 'Back', episodes_path %>
