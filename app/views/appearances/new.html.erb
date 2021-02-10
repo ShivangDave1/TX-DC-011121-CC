@@ -14,3 +14,15 @@
     <%= form.submit %>
 
 <% end %>
+
+<% if flash[:errors] %>
+
+    <% flash[:errors].each do |msg| %>
+
+        <div class="error-message">
+            <%= msg %>
+        </div>
+
+    <% end %>
+
+<% end %>
