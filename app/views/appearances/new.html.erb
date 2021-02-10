@@ -1,0 +1,19 @@
+<h1>Form Creation</h1>
+
+<% if flash[:errors] %>
+    <h3>Errors: </h3>
+        <ul>
+            <% flash[:errors].each do |error| %>
+             <li> <%= error %> </li>
+            <% end %>
+         </ul>
+<% end %>
+
+
+<%= form_with model: @appearance do |f| %>
+  <%= f.collection_select :episode_id, Episode.all, :id, :date %><br><br>
+  <%= f.collection_select :guest_id, Guest.all, :id, :name %><br><br>
+  <%= f.text_field :rating, :placeholder => "Input A Number" %><br><br>
+
+<%= f.submit %>
+<% end %>
