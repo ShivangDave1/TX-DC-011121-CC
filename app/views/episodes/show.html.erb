@@ -1,0 +1,15 @@
+<h2> Episode: <%= @episode.number %> </h2>
+<h3> <%= @episode.date %> </h3>
+
+Average Rating: 
+    <%= Appearance.where(episode: @episode).average(:rating) %>
+
+<br><br>
+Guest Appearances:
+<ul>
+  <% @episode.appearances.each do |app| %>
+    <li>
+      <%= link_to app.guest.name, guest_path(app.guest) %>
+    </li>
+  <% end %>
+</ul>
