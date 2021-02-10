@@ -1,0 +1,8 @@
+<h1>Guest Details</h1>
+
+<h3>Episodes Appeared On:</h3>
+<ul>
+    <% @guest.sort_by_rating.each do |appearance| %>
+        <li>Date: <%= link_to appearance.episode.date, episode_path(appearance.episode) %> - Rating: <%= appearance.rating %></li>
+    <% end %>
+</ul>

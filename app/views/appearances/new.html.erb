@@ -1,0 +1,32 @@
+<h1>Create Appearance on the Late Show</h1>
+
+
+<%= form_for @appearance do |f| %>
+    <table>
+        <tr>
+            <td><%= f.label :guest %></td>
+            <td><%= f.collection_select :guest_id, Guest.all, :id, :name, {prompt: "Select a guest"} %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :episode %></td>
+            <td><%= f.collection_select :episode_id, Episode.all, :id, :date, {prompt: "Select a episode date"} %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :rating %></td>
+            <td><%= f.number_field :rating %></td>
+        </tr>
+        <tr>
+            <td><%= f.submit %></td>
+        <t/r>
+    </table>
+        <% if flash[:errors] %>
+        <div class="errors">
+            <h3>There were some errors</h3>
+                <ul>
+                    <% flash[:errors].each do |message| %>
+                       <li><%= message %></li>
+                    <% end %>
+                </ul>
+        </div>
+        <% end %>
+<% end %>
