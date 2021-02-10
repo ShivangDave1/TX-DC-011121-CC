@@ -1,0 +1,9 @@
+<h1>New Appearance Form</h1>
+
+
+<%= form_with model: @appearance do |form| %>
+    <%= form.collection_select :guest_id, Guest.all, :id, :name %> <br>
+    <%= form.collection_select :episode_id, Episode.all, :id, :date %> <br>
+    <%= form.text_area :rating, :placeholder => "Rating" %> <br>
+    <%= form.submit %>
+ <% end %>
