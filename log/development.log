@@ -1,0 +1,1199 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRestaurants (20170808134858)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170808134858"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePizzas (20181129144046)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "pizzas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "ingredients" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181129144046"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-18 16:10:14.619385"], ["updated_at", "2021-02-18 16:10:14.619385"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address") VALUES (?, ?)[0m  [["name", "Sottocasa NYC"], ["address", "298 Atlantic Ave, Brooklyn, NY 11201"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address") VALUES (?, ?)[0m  [["name", "PizzArte"], ["address", "69 W 55th St, New York, NY 10019"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address") VALUES (?, ?)[0m  [["name", "San Matteo NYC"], ["address", "1559 2nd Ave, New York, NY 10028"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Cheese"], ["ingredients", "Dough, Tomato Sauce, Cheese"], ["created_at", "2021-02-18 16:10:31.065722"], ["updated_at", "2021-02-18 16:10:31.065722"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Pepperoni"], ["ingredients", "Dough, Tomato Sauce, Cheese, Pepperoni"], ["created_at", "2021-02-18 16:10:31.068569"], ["updated_at", "2021-02-18 16:10:31.068569"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "California"], ["ingredients", "Dough, Sauce, Ricotta, Red peppers, Mustard"], ["created_at", "2021-02-18 16:10:31.071373"], ["updated_at", "2021-02-18 16:10:31.071373"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Greek"], ["ingredients", "Dough, Sauce, Cheese, Feta, Artichokes, Kalamata Olives"], ["created_at", "2021-02-18 16:10:31.073816"], ["updated_at", "2021-02-18 16:10:31.073816"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Margherita"], ["ingredients", "Dough, Sauce, Cheese, Basil"], ["created_at", "2021-02-18 16:10:31.076522"], ["updated_at", "2021-02-18 16:10:31.076522"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "BBQ Chicken"], ["ingredients", "Dough, BBQ sauce, Chicken, Cilantro, Red Onions, Fontina Cheese"], ["created_at", "2021-02-18 16:10:31.079330"], ["updated_at", "2021-02-18 16:10:31.079330"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Hawaiian"], ["ingredients", "Dough, Sauce, Cheese, Ham, Pineapple "], ["created_at", "2021-02-18 16:10:31.081609"], ["updated_at", "2021-02-18 16:10:31.081609"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Meat Lovers"], ["ingredients", "Dough, Sauce, Cheese, Pepperoni, Sausage, Meatballs, Mushrooms"], ["created_at", "2021-02-18 16:10:31.083866"], ["updated_at", "2021-02-18 16:10:31.083866"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Frutti di mare"], ["ingredients", "Dough, Sauce, Cheese, Tuna, Shrimp, Mussels"], ["created_at", "2021-02-18 16:10:31.086102"], ["updated_at", "2021-02-18 16:10:31.086102"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Veggie"], ["ingredients", "Dough, Sauce, Cheese, Red Peppers, Green Peppers, Onions, Mushrooms"], ["created_at", "2021-02-18 16:10:31.088510"], ["updated_at", "2021-02-18 16:10:31.088510"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2021-02-18 11:10:44 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jadem/.rvm/gems/ruby-2.6.1/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jadem/.rvm/gems/ruby-2.6.1/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb (3.1ms)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants" for ::1 at 2021-02-18 11:11:18 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 1220ms (Views: 1214.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/powers" for ::1 at 2021-02-18 11:11:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/powers"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/pizzas" for ::1 at 2021-02-18 11:11:33 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.4ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 38ms (Views: 31.9ms | ActiveRecord: 1.5ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRestaurantPizzas (20210218162137)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "restaurant_pizzas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "price" integer, "restaurant_id" integer, "pizza_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_f279821f06"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+, CONSTRAINT "fk_rails_ab3bb148dc"
+FOREIGN KEY ("pizza_id")
+  REFERENCES "pizzas" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_restaurant_pizzas_on_restaurant_id" ON "restaurant_pizzas" ("restaurant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_restaurant_pizzas_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_restaurant_pizzas_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_restaurant_pizzas_on_pizza_id" ON "restaurant_pizzas" ("pizza_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210218162137"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_restaurant_pizzas_on_pizza_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_restaurant_pizzas_on_pizza_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_restaurant_pizzas_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_restaurant_pizzas_on_restaurant_id' AND type='index'
+[0m
+Started GET "/pizzas/show" for ::1 at 2021-02-18 11:29:14 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 261ms (Views: 256.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pizzas/show" for ::1 at 2021-02-18 11:30:18 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 15.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pizzas/index" for ::1 at 2021-02-18 11:30:45 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 11:30:50 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.4ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 64ms (Views: 59.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 11:31:20 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:31:23 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:31:34 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 46ms (Views: 31.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:31:44 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 26ms (Views: 24.5ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:32:57 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 7ms
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <h1>Pizza Show Page</h1>
+    2: 
+    3: 
+    4: <h1> <%= @pizza.name %></h2>
+    5: <h1> <%= @pizza.ingredients %></h2>
+  
+app/views/pizzas/show.html.erb:4:in `_app_views_pizzas_show_html_erb___2989626511107886374_70274773189960'
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:33:09 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.5ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 47ms (Views: 35.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 11:33:12 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 11:33:32 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:33:33 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 11:34:07 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/config/routes.rb:2: syntax error, unexpected [, expecting do or '{' or '('
+  resources :pizzas, only [:index, :show]
+                          ^):
+  
+config/routes.rb:2: syntax error, unexpected [, expecting do or '{' or '('
+Started GET "/pizzas" for ::1 at 2021-02-18 11:34:32 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/config/routes.rb:2: syntax error, unexpected ',', expecting '}'
+...esources :pizzas, only {:index, :show}
+...                              ^
+/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/config/routes.rb:5: syntax error, unexpected end, expecting end-of-input):
+  
+config/routes.rb:2: syntax error, unexpected ',', expecting '}'
+config/routes.rb:5: syntax error, unexpected end, expecting end-of-input
+Started GET "/pizzas" for ::1 at 2021-02-18 11:34:41 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 40ms (Views: 33.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/pizzas/2" for ::1 at 2021-02-18 11:34:43 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 35ms (Views: 31.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/restaurants" for ::1 at 2021-02-18 11:36:25 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 56ms (Views: 49.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/restaurants/show" for ::1 at 2021-02-18 11:36:30 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants" for ::1 at 2021-02-18 11:37:12 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:37:14 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:43:10 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <h1> Restaurant Show Page </h1>
+    2: 
+    3: <h1>Name: <%= @restaurant.name %></h2>
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+  
+app/views/restaurants/show.html.erb:3:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274771908100'
+Started GET "/restaurants" for ::1 at 2021-02-18 11:43:51 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 48ms (Views: 41.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:43:52 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/restaurants_controller.rb:8:in `show'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:44:04 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/restaurants_controller.rb:8:in `show'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:44:28 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+    7: <% @restaurants.each do |restaurant| %>
+    8:     <h1 style='font-size:1.5rem;margin-top:50px'>Restaurant Name:
+    9:         <%= link_to restaurant.name, restaurant_path(restaurant) %>
+   10:     </h1>
+  
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274779784280'
+Started GET "/pizzas/1" for ::1 at 2021-02-18 11:45:54 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 32ms (Views: 22.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/restaurants" for ::1 at 2021-02-18 11:46:01 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 29ms (Views: 24.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:46:03 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+    7: <% @restaurants.each do |r_p| %>
+    8:     <ul>
+    9:         <li> r_p.pizza.name</li>
+   10:         <li></li>
+  
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274771565040'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:46:23 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Restaurant:0x00007fd435d68e48>):
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+    7: <% @restaurant.each do |r_p| %>
+    8:     <ul>
+    9:         <li> r_p.pizza.name</li>
+   10:         <li></li>
+  
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274706543360'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:46:43 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Restaurant:0x00007fd436f07fa0>):
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+    7: <% @restaurant.each do |pizza| %>
+    8:     <ul>
+    9:         <li> restaurant.pizza.name</li>
+   10:         <li></li>
+  
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274715760460'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:47:02 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Restaurant:0x00007fd436f256b8>):
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+    7: <% @restaurant.each do |pizza| %>
+    8:     <ul>
+    9:         <li> @restaurant.pizza.name</li>
+   10:         <li></li>
+  
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274715820300'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:47:04 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  Rendered restaurants/show.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Restaurant:0x00007fd436ea50a8>):
+    4: <h1>Address : <%= @restaurant.address %></h2>
+    5: 
+    6: 
+    7: <% @restaurant.each do |pizza| %>
+    8:     <ul>
+    9:         <li> @restaurant.pizza.name</li>
+   10:         <li></li>
+  
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb__3433097116366108018_70274715582380'
+Started GET "/restaurants" for ::1 at 2021-02-18 11:50:32 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:50:33 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.7ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (43.2ms)
+Completed 200 OK in 80ms (Views: 75.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/restaurants/2" for ::1 at 2021-02-18 11:51:06 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.1ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  Rendered restaurants/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 52ms (Views: 49.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 11:51:38 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.1ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 29ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 12:05:54 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.5ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 308ms (Views: 290.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/restaurant_pizza/new" for ::1 at 2021-02-18 12:06:08 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/restaurant_pizza/new"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:06:30 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:21: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:21: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:07:13 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:22: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:22: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:08:01 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:22: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:22: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:09:02 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:21: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:21: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:09:11 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:21: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:21: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:11:20 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:19: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:19: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizza/new" for ::1 at 2021-02-18 12:11:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/restaurant_pizza/new"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:11:32 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:19: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:19: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:13:19 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:18: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:18: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:14:56 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:17: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:17: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:15:03 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:17: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:17: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:15:18 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"restaurant_pizzas", :format=>nil}, missing required keys: [:id]):
+    1: <h1>RestaurantPizza Form </h1>
+    2: 
+    3: <%= form_with model: :restaurant_pizza do |form| %>
+    4:     <%= form.collection_select :pizza_id, Pizza.all, :id, :name %>
+    5:     <%= form.collection_select :restaurant_id, Restaurant.all, :id, :name %>
+    6:     <%= text_area :price %>
+  
+app/views/restaurant_pizzas/new.html.erb:3:in `_app_views_restaurant_pizzas_new_html_erb__24925474201033691_70194185692080'
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:15:50 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.7ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (26.6ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 3.5ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 2..3)):
+    3: <%= form_with model: @restaurant_pizza do |form| %>
+    4:     <%= form.collection_select :pizza_id, Pizza.all, :id, :name %>
+    5:     <%= form.collection_select :restaurant_id, Restaurant.all, :id, :name %>
+    6:     <%= text_area :price %>
+    7:     
+    8:   
+    9:     <%= form.submit %>
+  
+app/views/restaurant_pizzas/new.html.erb:6:in `block in _app_views_restaurant_pizzas_new_html_erb__24925474201033691_70194139425960'
+app/views/restaurant_pizzas/new.html.erb:3:in `_app_views_restaurant_pizzas_new_html_erb__24925474201033691_70194139425960'
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:16:08 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:16:22 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UimWdUeAuvSgCknuXx88UdMg0IpTvOkUurEXPV01jFT00fWoKbxOuS+2kr/i89Oy7d1bAiWwZ300o2qqBQkWBg==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"10"}, "commit"=>"Create Restaurant pizza"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "restaurant_pizzas" ("price", "restaurant_id", "pizza_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["price", 10], ["restaurant_id", 1], ["pizza_id", 1], ["created_at", "2021-02-18 17:16:22.837784"], ["updated_at", "2021-02-18 17:16:22.837784"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 4.4ms)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"restaurants"}, missing required keys: [:id]):
+  
+app/controllers/restaurant_pizzas_controller.rb:9:in `create'
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:17:40 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UimWdUeAuvSgCknuXx88UdMg0IpTvOkUurEXPV01jFT00fWoKbxOuS+2kr/i89Oy7d1bAiWwZ300o2qqBQkWBg==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"10"}, "commit"=>"Create Restaurant pizza"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "restaurant_pizzas" ("price", "restaurant_id", "pizza_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["price", 10], ["restaurant_id", 1], ["pizza_id", 1], ["created_at", "2021-02-18 17:17:40.543931"], ["updated_at", "2021-02-18 17:17:40.543931"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/restaurants/1
+Completed 200 OK in 39ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 12:17:40 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.4ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Pizza Load (0.0ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 37ms (Views: 31.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:17:53 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:18:04 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LwIGuqsJDgHNnBo4vMrdExOGxlPmArK1TOEiY2JmkhuJ+mVnxTX6TEIgwWkBJjLwLXtN25AOPNzC81/0OloISQ==", "restaurant_pizza"=>{"pizza_id"=>"2", "restaurant_id"=>"2", "price"=>"10"}, "commit"=>"Create Restaurant pizza"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurant_pizzas" ("price", "restaurant_id", "pizza_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["price", 10], ["restaurant_id", 2], ["pizza_id", 2], ["created_at", "2021-02-18 17:18:04.490810"], ["updated_at", "2021-02-18 17:18:04.490810"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/restaurants/2
+Completed 200 OK in 9ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/restaurants/2" for ::1 at 2021-02-18 12:18:04 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.4ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 59ms (Views: 54.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:25:48 -0500
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/controllers/restaurant_pizzas_controller.rb:23: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/restaurant_pizzas_controller.rb:23: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:26:02 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.6ms)
+
+
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/views/restaurant_pizzas/new.html.erb:17: syntax error, unexpected ensure, expecting end
+          ensure
+          ^~~~~~
+/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/views/restaurant_pizzas/new.html.erb:19: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/restaurant_pizzas/new.html.erb:17: syntax error, unexpected ensure, expecting end
+app/views/restaurant_pizzas/new.html.erb:19: syntax error, unexpected end-of-input, expecting end
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:27:22 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <% if flash[:errors].each do |err| %>
+    2:     <%= err %>
+    3: <% end %>
+    4: <% end %>
+  
+app/views/restaurant_pizzas/new.html.erb:1:in `_app_views_restaurant_pizzas_new_html_erb__24925474201033691_70194090346720'
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:29:29 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 53ms (Views: 48.7ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:29:47 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zGuH5ueEf+RRr8h7ZiSH9M1PrMmQXEyApZLi8o/HxC5qk+Q7ibiLqd4TEyrbyGgX87InQeZQwukrgJ9l1/tefA==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 2)):
+  
+app/controllers/restaurant_pizzas_controller.rb:13:in `create'
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:29:48 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zGuH5ueEf+RRr8h7ZiSH9M1PrMmQXEyApZLi8o/HxC5qk+Q7ibiLqd4TEyrbyGgX87InQeZQwukrgJ9l1/tefA==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 2)):
+  
+app/controllers/restaurant_pizzas_controller.rb:13:in `create'
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:30:08 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zGuH5ueEf+RRr8h7ZiSH9M1PrMmQXEyApZLi8o/HxC5qk+Q7ibiLqd4TEyrbyGgX87InQeZQwukrgJ9l1/tefA==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to 
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 3.1ms)
+
+
+  
+NoMethodError (undefined method `new_url' for #<RestaurantPizzasController:0x00007faeb153f3d8>):
+  
+app/controllers/restaurant_pizzas_controller.rb:14:in `create'
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:31:22 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zGuH5ueEf+RRr8h7ZiSH9M1PrMmQXEyApZLi8o/HxC5qk+Q7ibiLqd4TEyrbyGgX87InQeZQwukrgJ9l1/tefA==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 177ms (ActiveRecord: 2.7ms)
+
+
+  
+NameError (undefined local variable or method `new_restaurant_pizza' for #<RestaurantPizzasController:0x00007fe2c442dcc8>
+Did you mean?  new_restaurant_pizza_url
+               new_restaurant_pizza_path
+               new_restaurant_path
+               new_restaurant_url):
+  
+app/controllers/restaurant_pizzas_controller.rb:14:in `create'
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:31:32 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zGuH5ueEf+RRr8h7ZiSH9M1PrMmQXEyApZLi8o/HxC5qk+Q7ibiLqd4TEyrbyGgX87InQeZQwukrgJ9l1/tefA==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/restaurant_pizzas/new
+Completed 200 OK in 31ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:31:42 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 255ms (Views: 253.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/restaurants" for ::1 at 2021-02-18 12:32:08 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 12:32:10 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.3ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Pizza Load (0.0ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 38ms (Views: 33.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 12:34:15 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.1ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `pizza' for nil:NilClass):
+     5: 
+     6: <ul>
+     7:     <% @restaurant.restaurant_pizzas.each do |r_p| %>
+     8:         <li> <%= link_to r_p.pizza.name, pizza_path(@r_p.pizza)  %></li>
+     9:     <% end %>
+    10: </ul>
+    11:   
+  
+app/views/restaurants/show.html.erb:8:in `block in _app_views_restaurants_show_html_erb___2095950181175852346_70305980736620'
+app/views/restaurants/show.html.erb:7:in `_app_views_restaurants_show_html_erb___2095950181175852346_70305980736620'
+Started GET "/restaurants/1" for ::1 at 2021-02-18 12:36:04 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.2ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (45.4ms)
+Completed 200 OK in 290ms (Views: 269.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 12:36:06 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 60ms (Views: 55.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:40:13 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 56ms (Views: 45.7ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:40:29 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5/Ckm1/3c/5g6iuj8wLoMGR+WXnw+XI/73e5SOygdPlBCMdGMcuHs+9W8PJO7gfTWoPS8Yb1/FZhZcTftJzuqw==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"30"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurantPizza Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."pizza_id" = ? AND "restaurant_pizzas"."restaurant_id" = 1 LIMIT ?[0m  [["pizza_id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/restaurant_pizzas/new
+Completed 200 OK in 11ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:40:29 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 37ms (Views: 34.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:40:59 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JjJHuNqSsCjUJQcD6V0TBHlBj6ztn0X8Rv4khWtWCvv2glSjsv3xgdeWbaIJ4F7pZGgv8QN7ihAiLL5ZqYhWQQ==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurantPizza Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."pizza_id" = ? AND "restaurant_pizzas"."restaurant_id" = 1 LIMIT ?[0m  [["pizza_id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/restaurant_pizzas/new
+Completed 200 OK in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:40:59 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/restaurant_pizzas" for ::1 at 2021-02-18 12:41:38 -0500
+Processing by RestaurantPizzasController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2Q35SKZWby6wCWSTuMheU/aJRFCHSLjV1FGbE/KKe3IJvepTzjkuh7O6DjJYdRO+66DkDWmsdzmwgwHPMFQnyA==", "restaurant_pizza"=>{"pizza_id"=>"1", "restaurant_id"=>"1", "price"=>"0"}, "commit"=>"Create Restaurant pizza"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurantPizza Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."pizza_id" = ? AND "restaurant_pizzas"."restaurant_id" = 1 LIMIT ?[0m  [["pizza_id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/restaurant_pizzas/new
+Completed 200 OK in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:41:38 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/restaurant_pizzas/new" for ::1 at 2021-02-18 12:42:53 -0500
+Processing by RestaurantPizzasController#new as HTML
+  Rendering restaurant_pizzas/new.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurant_pizzas/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/restaurants" for ::1 at 2021-02-18 12:44:59 -0500
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 29ms (Views: 27.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2021-02-18 12:45:01 -0500
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mRestaurantPizza Load (0.3ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  [1m[36mPizza Load (0.1ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Pizza Load (0.0ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered restaurants/show.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 12:45:02 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 28ms (Views: 24.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/powers" for ::1 at 2021-02-18 12:45:11 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/powers"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/pizzas" for ::1 at 2021-02-18 12:45:12 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pizzas/1" for ::1 at 2021-02-18 12:45:13 -0500
+Processing by PizzasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT  "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pizzas/show.html.erb within layouts/application
+  Rendered pizzas/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 27ms (Views: 24.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 12:57:11 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/pizzas" for ::1 at 2021-02-18 12:57:28 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  Rendered pizzas/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/jadem/Desktop/Flatiron/code/week6/TX-DC-011121-CC/app/views/pizzas/index.html.erb:6: syntax error, unexpected tLABEL
+...;@output_buffer.append=( Count: pizza.restuarants.count );@o...
+...                         ^~~~~~):
+  
+app/views/pizzas/index.html.erb:6: syntax error, unexpected tLABEL
+Started GET "/pizzas" for ::1 at 2021-02-18 12:57:59 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  Rendered pizzas/index.html.erb within layouts/application (8.7ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `restuarants' for #<Pizza:0x00007fecdf844ff8>
+Did you mean?  restaurants
+               restaurants=):
+    3: <% @pizzas.each do |pizza| %>
+    4:   <h1 style='font-size:1.5rem;margin-top:50px'>Pizza Name:
+    5:       <%= link_to pizza.name, pizza_path(pizza) %>
+    6:      <h3>Count: <%= pizza.restuarants.count %> </h3>
+    7:   </h1>
+    8:   <p>Ingredients: <%= pizza.ingredients %></p>
+    9: <% end %>
+  
+app/views/pizzas/index.html.erb:6:in `block in _app_views_pizzas_index_html_erb__1731851443055162584_70327669468300'
+app/views/pizzas/index.html.erb:3:in `_app_views_pizzas_index_html_erb__1731851443055162584_70327669468300'
+Started GET "/pizzas" for ::1 at 2021-02-18 12:58:22 -0500
+Processing by PizzasController#index as HTML
+  Rendering pizzas/index.html.erb within layouts/application
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 7]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 8]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 9]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants" INNER JOIN "restaurant_pizzas" ON "restaurants"."id" = "restaurant_pizzas"."restaurant_id" WHERE "restaurant_pizzas"."pizza_id" = ?[0m  [["pizza_id", 10]]
+  Rendered pizzas/index.html.erb within layouts/application (31.8ms)
+Completed 200 OK in 52ms (Views: 48.6ms | ActiveRecord: 2.4ms)
+
+
