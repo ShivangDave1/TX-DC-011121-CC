@@ -29,7 +29,39 @@ document.addEventListener('DOMContentLoaded', () => {
             image.comments.forEach(comment => {
                 let commentListItem = document.createElement('li')
                     commentListItem.innerText = comment.content
-                    imageCommentsList.appendChild(commentListItem)
+                    commentListItem.style.padding = '3px'
+                    commentListItem.dataset.commentId = `comment${comment.id}`
+
+                let deleteButton = document.createElement('button')
+                    deleteButton.classList.add('comment-button')
+                    deleteButton.innerText = "Delete"
+                    deleteButton.style.float = 'right'
+                    deleteButton.dataset.delId = `delete${comment.id}`
+                    deleteButton.addEventListener('click', (e) => {
+                        
+                        let delBtnData = e.target.dataset.delId
+                        let delBtnId = delBtnData.substring(6, delBtnData.length)
+                        
+                        let delUrl = `comments/${delBtnId}`
+
+                        let delObj = {
+                            headers: {
+                                "Content-Type": "application/json",
+                                Accept: "application/json"
+                            },
+                            method: "DELETE"
+                        }
+
+                        fetch(BASE_URL+delUrl, delObj)
+                            .then(res => res.json())
+                            .then((parsRes) => {
+                                fetchImage(parsRes)
+                            })
+                    })
+
+                    commentListItem.appendChild(deleteButton)
+
+                imageCommentsList.appendChild(commentListItem)
             })
 
         let likeButton = document.getElementById('like')
@@ -90,11 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 fetch(BASE_URL+unlikeUrl, unlikeObj)
                 .then(res => res.json())
-                .then((parsRes) => {
-                    fetchImage(parsRes)
+                .then(() => {
+                    fetchImage()
                 })
 
-                // console.log(unlikeObj)
             })
             
 

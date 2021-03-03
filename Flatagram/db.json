@@ -42,6 +42,11 @@
       "imageId": 1,
       "content": "Here we go!",
       "id": 7
+    },
+    {
+      "imageId": 1,
+      "content": "Comments are persisting",
+      "id": 8
     }
   ]
 }
