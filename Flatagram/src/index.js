@@ -9,10 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
             .then(parsRes => renderImage(parsRes))
     }
-    
-    
+
     function renderImage(image) {
-        
 
         let imageTitle = document.getElementById('image-title')
             imageTitle.innerText = image.title
@@ -67,7 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let likeButton = document.getElementById('like')
             likeButton.dataset.likeId = `like${image.id}`
             likeButton.addEventListener('click', (e) => {
-                
+
+                // if i had more time i would refactor my like, unlike, delete and comment setups 
+                // reused a lot of lines of code but ran out of time
+
                 let likeBtnData = e.target.dataset.likeId
                 let likeBtnId = likeBtnData.substring(4, likeBtnData.length)
 
@@ -91,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     .then((parsRes) => {
                         imageLikes.innerText = `${parsRes.likes} likes`
                     })
-                
             })
 
         let unlikeButton = document.getElementById('unlike')
@@ -148,6 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     .then(res => res.json())
                     .then((parsRes) => {
                         
+                        // if i had more time i would refactor my comments
+                        // -- ran out of time and didn't want to break anything
+
                         let newComment = document.createElement('li')
                             newComment.innerText = parsRes.content
                             newComment.style.padding = '3px'
