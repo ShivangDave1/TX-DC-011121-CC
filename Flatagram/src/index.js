@@ -3,26 +3,26 @@ const IMAGE_URL = BASE_URL+'images/1'
 const COMMENTS_URL = BASE_URL+'comments/'
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchPhoto()
+    fetchImage()
     document.querySelector('.comment-form').addEventListener('submit', newComment)
 })
 
-function fetchPhoto() {
+function fetchImage() {
     fetch(IMAGE_URL)
         .then(res => res.json())
-        .then(photoData => {
-            renderPhoto(photoData)
+        .then(imageData => {
+            renderImage(imageData)
         })
 }
 
-function renderPhoto(photo) {
-    document.querySelector('#image-title').innerHTML = photo.title
-    document.querySelector('#image-picture').src = photo.image
-    document.querySelector('.likes').innerText = `${photo.likes} likes`
+function renderImage(image) {
+    document.querySelector('#image-title').innerHTML = image.title
+    document.querySelector('#image-picture').src = image.image
+    document.querySelector('.likes').innerText = `${image.likes} likes`
     document.querySelector('.like-button').addEventListener('click', (e) => {
         // console.log(e.target.parentNode.querySelector('.likes').innerText)
         // console.log(photo.likes)
-        likePhoto(e, photo)
+        likeImage(e, image)
     })
 
     fetch(COMMENTS_URL)
@@ -42,25 +42,26 @@ function renderComment(comment) {
     commentsList.appendChild(commentItem)
 }
 
-function likePhoto(e, photo) {
+function likeImage(e) {
+
+    //removed photo param, i.e. likePhoto(e, photo) {...}
+    //because there is only one image
+    //therefore the IMAGE_URL already utilizes the correct photo.id
+
     const likes = e.target.parentNode.querySelector('.likes')
     const likesCount = likes.innerText.split(' ')[0]
-    // console.log(likesCount)
+    
     const newLikesCount = parseInt(likesCount) + 1
 
-    const updatedPhoto = {
+    const updatedImage = {
         likes: newLikesCount
     }
-
-    // console.log(updatedPhoto)
 
     const reqObj = {
         headers: {"Content-Type": "application/json"},
         method: "PATCH",
-        body: JSON.stringify(updatedPhoto)
+        body: JSON.stringify(updatedImage)
     }
-
-    // console.log(reqObj);
 
     fetch(IMAGE_URL, reqObj)
         .then(res => res.json())
@@ -71,6 +72,12 @@ function likePhoto(e, photo) {
 
 function newComment(e) {
     e.preventDefault()
+
+    //Using a hard-coded imageId: 1 for all new comments because there's only one image and I wanted to keep the code as readable as possible
+    //A way to make this more dynamic...
+    //  Move event listener on the '.comment-form' to the renderImage function
+    //    This would allow me access to the photo argument used in renderImage(image)
+    //      Therefore setting 'imageId: image.id' would give me the correct imageId in the new object
 
     const newComment = {
         imageId: 1,
