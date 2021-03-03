@@ -74,7 +74,7 @@ function removeLike(image) {
     let newLike = { likes: image.likes}
     if (image.likes > 0){
         newLike = { likes: image.likes - 1}
-    }
+    } 
 
     let reqObj = {
         headers: {"Content-Type": "application/json", Accept: "application/json"}, 
