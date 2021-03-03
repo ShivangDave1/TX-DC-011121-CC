@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getImage();
 })
 document.querySelector(".like-button").addEventListener('click', clickLike)
+document.getElementById("unlike-button").addEventListener('click', clickUnlike)
 document.querySelector(".comment-form").addEventListener('submit', addComment)
 function getImage() {
     fetch('http://localhost:3000/images')
@@ -64,8 +65,29 @@ function clickLike(e) {
     getSingleImage(document.getElementsByClassName("title")[0].dataset.id)
     .then(addLike)
 }
+function clickUnlike(e) {
+    getSingleImage(document.getElementsByClassName("title")[0].dataset.id)
+    .then(removeLike)
+}
+function removeLike(image) {
+
+    let newLike = { likes: image.likes}
+    if (image.likes > 0){
+        newLike = { likes: image.likes - 1}
+    }
+
+    let reqObj = {
+        headers: {"Content-Type": "application/json", Accept: "application/json"}, 
+        method: "PATCH", 
+        body: JSON.stringify(newLike)
+      }
+      fetch('http://localhost:3000/images/' + image.id, reqObj)
+      .then(r => r.json())
+      .then(updated => {
+        document.getElementsByClassName("likes")[0].innerText = `${updated.likes} likes`
+      })
+}
 function addLike(image) {
-    // debugger
     let newLike = { likes: image.likes + 1}
     let reqObj = {
         headers: {"Content-Type": "application/json", Accept: "application/json"}, 
