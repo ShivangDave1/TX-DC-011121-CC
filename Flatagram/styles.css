@@ -123,3 +123,14 @@ body {
 .comment-button:focus {
   outline: none;
 }
+
+.delete-button {
+  border: medium solid red;
+  border-radius: 15%;
+  margin-left: 1rem;
+  background-color: white;
+}
+
+.delete-button:hover {
+  background-color: lightcoral;
+}

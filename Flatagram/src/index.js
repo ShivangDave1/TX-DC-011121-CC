@@ -22,8 +22,17 @@ function renderImage(image) {
     document.querySelector('.like-button').addEventListener('click', (e) => {
         // console.log(e.target.parentNode.querySelector('.likes').innerText)
         // console.log(photo.likes)
-        likeImage(e, image)
+        likeImage(e)
     })
+
+    const downVoteButton = document.createElement('button')
+        downVoteButton.innerText = "You really want to downvote a puppy? Also ran out of time to style but this giant button still works."
+        downVoteButton.addEventListener('click', (e) => {
+            alert("I can't believe you tried to downvote this puppy. Not gonna happen. But see downVoteImage function in index.js for logic if necessary.")
+            // downVoteImage(e)
+        })
+
+    document.querySelector('.image-container').appendChild(downVoteButton);
 
     fetch(COMMENTS_URL)
         .then(res => res.json())
@@ -38,6 +47,18 @@ function renderComment(comment) {
     const commentsList = document.querySelector('.comments')
     const commentItem = document.createElement('li')
         commentItem.innerText = comment.content
+    
+    const deleteBtn = document.createElement('button')
+        // deleteBtn.style.border = 'thick solid red'
+        // deleteBtn.style.backgroundColor = 'pink'
+        deleteBtn.innerText = "Delete"
+        // deleteBtn.style.marginLeft = "1rem"
+        deleteBtn.classList.add('delete-button')
+        deleteBtn.addEventListener('click', () => {
+            deleteComment(comment, commentItem)
+        })
+    
+    commentItem.appendChild(deleteBtn)
     
     commentsList.appendChild(commentItem)
 }
@@ -102,4 +123,38 @@ function newComment(e) {
     } else {
         alert("A new comment must contain content")
     }
+}
+
+function deleteComment(comment, li){
+    // console.log(comment)
+    // console.log(li)
+
+    fetch(COMMENTS_URL+comment.id, {method: "DELETE"})
+        .then(res => res.json())
+        .then(_ => {
+            li.remove()
+        })
+}
+
+function downVoteImage(e) {
+    const likes = e.target.parentNode.querySelector('.likes')
+    const likesCount = likes.innerText.split(' ')[0]
+    
+    const newLikesCount = parseInt(likesCount) - 1
+
+    const updatedImage = {
+        likes: newLikesCount
+    }
+
+    const reqObj = {
+        headers: {"Content-Type": "application/json"},
+        method: "PATCH",
+        body: JSON.stringify(updatedImage)
+    }
+
+    fetch(IMAGE_URL, reqObj)
+        .then(res => res.json())
+        .then(_ => {
+            likes.innerText = `${newLikesCount} likes`
+        })
 }
