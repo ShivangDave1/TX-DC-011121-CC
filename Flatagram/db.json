@@ -25,13 +25,8 @@
     },
     {
       "imageId": "1",
-      "content": "new first",
+      "content": "I'll delete all the comments",
       "id": 4
-    },
-    {
-      "imageId": "1",
-      "content": "New again",
-      "id": 5
     }
   ]
 }

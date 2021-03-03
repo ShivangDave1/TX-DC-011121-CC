@@ -16,15 +16,15 @@ function renderImage(e) {
     title.innerText = e.title
     title.dataset.id = e.id
     document.getElementsByClassName("likes")[0].innerText = `${e.likes} likes`
-    let commentList = document.getElementsByClassName("comments")[0] 
-    while (commentList.hasChildNodes()){
-        commentList.removeChild(commentList.firstChild)
-    }
-
+    
     getComments()
     // debugger
 }
 function getComments() {
+    let commentList = document.getElementsByClassName("comments")[0] 
+    while (commentList.hasChildNodes()){
+        commentList.removeChild(commentList.firstChild)
+    }
     fetch('http://localhost:3000/comments')
     .then(res => res.json())
     .then(commentData => commentData.forEach(renderComments))
@@ -35,9 +35,30 @@ function renderComments(e) {
     if (document.getElementsByClassName("title")[0].dataset.id == e.imageId){
         let li = document.createElement("li")
             li.innerText = e.content
+        let deleteButton = document.createElement("button")
+            deleteButton.innerText = "delete"
+            deleteButton.dataset.id = e.id
+            li.appendChild(deleteButton)
+        deleteButton.addEventListener('click', clickDelete)
         commentList.appendChild(li)
     }
 
+}
+function clickDelete(e) {
+    getSingleComment(e.target.dataset.id)
+    .then(deleteComment)
+}
+function deleteComment(comment) {
+    // debugger
+    reqObj = {
+        headers: {"Content-Type": "application/json", Accept: "application/json"}, 
+        method: "DELETE", 
+    }
+    fetch('http://localhost:3000/comments/' + comment.id, reqObj)
+    .then(r => r.json())
+    .then(updated => {
+      getComments()
+    })
 }
 function clickLike(e) {
     getSingleImage(document.getElementsByClassName("title")[0].dataset.id)
@@ -76,5 +97,9 @@ function addComment(e) {
 
 function getSingleImage(id) {
     return fetch('http://localhost:3000/images/' + id)
+    .then(res => res.json())
+}
+function getSingleComment(id) {
+    return fetch('http://localhost:3000/comments/' + id)
     .then(res => res.json())
 }
