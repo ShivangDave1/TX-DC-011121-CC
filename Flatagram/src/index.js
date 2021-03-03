@@ -61,6 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                 
             })
+
+        let commentForm = document.getElementById('new-comment')
+            commentForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+
+                let commentUrl = `comments`
+                
+                let newComment = {
+                    imageId: image.id,
+                    content: e.target.comment.value
+                }
+
+                let commentObj = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json"
+                    },
+                    method: "POST",
+                    body: JSON.stringify(newComment)
+
+                }
+
+                fetch(BASE_URL+commentUrl, commentObj)
+                    .then(res => res.json())
+                    .then(() => {
+                        fetchImage()
+                        commentForm.reset()
+                    })
+            })
     
     }
 
