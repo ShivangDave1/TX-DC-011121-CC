@@ -92,10 +92,14 @@ function newComment(e) {
 
     // console.log(reqObj)
 
-    fetch(COMMENTS_URL, reqObj)
-        .then(res => res.json())
-        .then(resComment => {
-            renderComment(resComment)
-            document.querySelector('.comment-form').reset()
-        })
+    if(newComment.content !== ""){
+        fetch(COMMENTS_URL, reqObj)
+            .then(res => res.json())
+            .then(resComment => {
+                renderComment(resComment)
+                document.querySelector('.comment-form').reset()
+            })
+    } else {
+        alert("A new comment must contain content")
+    }
 }
