@@ -1,7 +1,10 @@
 // write your code here
+
+//CORE DEPENCIES AND A LITTLE BIT EXTRA STUFF
+
 let BASE_URL = "http://localhost:3000"
 let GETS = `${BASE_URL}/images/1`
-let POSTS = `${BASE_URL}/comments`
+let POSTS = `${BASE_URL}/comments/`
 let likes = document.querySelector('span')
 let commentsContainer = document.getElementById('comments')
 
@@ -36,15 +39,15 @@ const createNewComment = e => {
     e.preventDefault()
     let form = e.target
     let newComment = form.comment.value
-    appendComment(newComment)
+    // appendComment(newComment) puts the new element onto the screen
     form.reset()
-    addNewComment(newComment, +form.dataset.ownerId)
+    addNewComment(appendComment(newComment), +form.dataset.ownerId)
 }
 
 //updates the backend with the new comment
 const addNewComment = (comment, ownerId) => {
     let update = {
-        content: comment,
+        content: comment.innerHTML.split('<')[0],
         imageId: ownerId //could have been hardcoded since there's only one image :)
     }
 
@@ -58,7 +61,7 @@ const addNewComment = (comment, ownerId) => {
     }
 
     fetch(POSTS, request).then(res => res.json())
-    .then(res => {debugger})
+    .then(res => {comment.id = res.id}) // so I can access the id later in removeComment
     .catch(error => alert(`${error.message} Therefore, comment isn't saved :(`))
 }
 
@@ -110,11 +113,13 @@ const appendComment = comment => {
         delButton.onclick = removeComment
     li.appendChild(delButton)
     commentsContainer.appendChild(li)
+    return li
 }
 
 //removes a comment from the page
 const removeComment = e => {
     let unwantedComment = e.target.parentElement
+    let postId = +unwantedComment.id
     unwantedComment.hidden = true
 
     let request = {
@@ -124,8 +129,11 @@ const removeComment = e => {
         }
     }
 
-    // fetch()
-    debugger
+    fetch(POSTS+postId, request).then(res => res.json())
+    .catch(error => {
+        alert(`${error.message} Comment can't be deleted`)
+        unwantedComment.hidden = false
+    })
 }
 
 init() //needed to be down here to run const-defined funcitons
