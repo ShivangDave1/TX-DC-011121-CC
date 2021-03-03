@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 fetch(BASE_URL+likeUrl, likeObj)
                     .then(res => res.json())
-                    .then((parsRes) => {
-                        fetchImage(parsRes)
+                    .then(() => {
+                        fetchImage()
                     })
                 
             })
@@ -128,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             })
             
+        // after working on delete button noticed my comment form works great on first comment
+        // second comment is either duplicated or triple posted
+        // gets worse after each comment
 
         let commentForm = document.getElementById('new-comment')
             commentForm.addEventListener('submit', (e) => {
