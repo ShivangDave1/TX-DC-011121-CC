@@ -1,9 +1,10 @@
 const BASE_URL = 'http://localhost:3000/'
 const IMAGE_URL = BASE_URL+'images/1'
-const COMMENTS_URL = BASE_URL+'/comments/'
+const COMMENTS_URL = BASE_URL+'comments/'
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchPhoto()
+    document.querySelector('.comment-form').addEventListener('submit', newComment)
 })
 
 function fetchPhoto() {
@@ -23,6 +24,22 @@ function renderPhoto(photo) {
         // console.log(photo.likes)
         likePhoto(e, photo)
     })
+
+    fetch(COMMENTS_URL)
+        .then(res => res.json())
+        .then(commentsData => {
+            commentsData.forEach(comment => {
+                renderComment(comment)
+            })
+        })
+}
+
+function renderComment(comment) {
+    const commentsList = document.querySelector('.comments')
+    const commentItem = document.createElement('li')
+        commentItem.innerText = comment.content
+    
+    commentsList.appendChild(commentItem)
 }
 
 function likePhoto(e, photo) {
@@ -49,5 +66,29 @@ function likePhoto(e, photo) {
         .then(res => res.json())
         .then(_ => {
             likes.innerText = `${newLikesCount} likes`
+        })
+}
+
+function newComment(e) {
+    e.preventDefault()
+
+    const newComment = {
+        imageId: 1,
+        content: e.target.comment.value
+    }
+
+    const reqObj = {
+        headers: {"Content-Type": "application/json"},
+        method: "POST",
+        body: JSON.stringify(newComment)
+    }
+
+    // console.log(reqObj)
+
+    fetch(COMMENTS_URL, reqObj)
+        .then(res => res.json())
+        .then(resComment => {
+            renderComment(resComment)
+            document.querySelector('.comment-form').reset()
         })
 }
