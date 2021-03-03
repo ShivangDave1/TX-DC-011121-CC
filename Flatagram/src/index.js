@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         fetch(BASE_URL+delUrl, delObj)
                             .then(res => res.json())
-                            .then((parsRes) => {
-                                fetchImage(parsRes)
+                            .then(() => {
+                                e.target.parentElement.remove()
                             })
                     })
 
@@ -88,17 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 fetch(BASE_URL+likeUrl, likeObj)
                     .then(res => res.json())
-                    .then(() => {
-                        fetchImage()
+                    .then((parsRes) => {
+                        imageLikes.innerText = `${parsRes.likes} likes`
                     })
                 
             })
 
-        // found a bug after implementing the unlike button - 
-        // if you click like and unlike too fast you wind up starting a new fetch before previous 
-        // ones have finished resulting in ERR_CONNECTION_REFUSED 
-        // -- please click slowly to see functionality.. lol
-        // not sure how to fix this (possibly use optimistic rendering to keep page up to date for next fetch?)
         let unlikeButton = document.getElementById('unlike')
             unlikeButton.dataset.unlikeId = `unlike${image.id}`
             unlikeButton.addEventListener('click', (e)=> {
@@ -122,16 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 fetch(BASE_URL+unlikeUrl, unlikeObj)
                 .then(res => res.json())
-                .then(() => {
-                    fetchImage()
+                .then((parsRes) => {
+                    imageLikes.innerText = `${parsRes.likes} likes`
                 })
 
             })
             
-        // after working on delete button noticed my comment form works great on first comment
-        // second comment is either duplicated or triple posted
-        // gets worse after each comment
-
         let commentForm = document.getElementById('new-comment')
             commentForm.addEventListener('submit', (e) => {
                 e.preventDefault()
@@ -155,8 +146,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 fetch(BASE_URL+commentUrl, commentObj)
                     .then(res => res.json())
-                    .then(() => {
-                        fetchImage()
+                    .then((parsRes) => {
+                        
+                        let newComment = document.createElement('li')
+                            newComment.innerText = parsRes.content
+                            newComment.style.padding = '3px'
+                            newComment.dataset.commentId = `comment${parsRes.id}`
+
+                        let deleteButton = document.createElement('button')
+                            deleteButton.classList.add('comment-button')
+                            deleteButton.innerText = "Delete"
+                            deleteButton.style.float = 'right'
+                            deleteButton.dataset.delId = `delete${parsRes.id}`
+                            deleteButton.addEventListener('click', (e) => {
+                                
+                                let delBtnData = e.target.dataset.delId
+                                let delBtnId = delBtnData.substring(6, delBtnData.length)
+                                
+                                let delUrl = `comments/${delBtnId}`
+        
+                                let delObj = {
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        Accept: "application/json"
+                                    },
+                                    method: "DELETE"
+                                }
+        
+                                fetch(BASE_URL+delUrl, delObj)
+                                    .then(res => res.json())
+                                    .then(() => {
+                                        e.target.parentElement.remove()
+                                    })
+                            })
+        
+                        newComment.appendChild(deleteButton)
+        
+                        imageCommentsList.appendChild(newComment)
+
                         commentForm.reset()
                     })
             })
