@@ -28,7 +28,7 @@ function renderImage(image) {
     const downVoteButton = document.createElement('button')
         downVoteButton.innerText = "You really want to downvote a puppy? Also ran out of time to style but this giant button still works."
         downVoteButton.addEventListener('click', (e) => {
-            alert("I can't believe you tried to downvote this puppy. Not gonna happen. But see downVoteImage function in index.js for logic if necessary.")
+            alert("I can't believe you tried to downvote this puppy. Not gonna happen. But see downVoteImage function in index.js for logic if necessary or uncomment the line of code below this alert in index.js to see working.")
             // downVoteImage(e)
         })
 
