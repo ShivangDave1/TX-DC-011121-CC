@@ -2,7 +2,7 @@
 // On page load, **request** data from the server to get all of the characters objects. 
 // When you have this information, you'll need to add a `span` tag with the character's name to the character bar.
 
-const BASE_URL = 'http://localhost:3000/characters'
+const BASE_URL = 'http://localhost:3000/characters/'
 
 
     fetch(BASE_URL)
@@ -28,7 +28,7 @@ function renderChar(char){
 // 2. Select a character from the character bar and see character's info inside `#detailed-info` div. 
 
 function renderDetails(char){
-    // console.log(char.name)
+    // console.log(char)
 
     // <p id="name">Character's Name</p>
     let name = document.getElementById('name')
@@ -41,6 +41,10 @@ function renderDetails(char){
     // <h4>Total Calories: <span id="calorieSpan">Character's Calories</span> </h4>
     let totalCalories = document.getElementById('calorieSpan')
         totalCalories.innerText = char.calories
+    
+    let charId = document.getElementById('characterId')
+        charId.value = char.id
+        console.log(charId); 
 
 }
 
@@ -49,24 +53,39 @@ function renderDetails(char){
 // <form id="calories-form">
 document.getElementById('calories-form').addEventListener('submit', addCalories)
 
-console.log(document.getElementById('calories-form'));
+// console.log(document.getElementById('calories-form'));
 
 function addCalories(e) {
     e.preventDefault()
     
+    let count = document.getElementById('calorieSpan').innerText
+    console.log(count);
+
     let newCalories = {
-        name: id,
-        calories: e.target.calories.value
+        id: parseInt(e.target.characterId.value) + count,
+        calories: parseFloat(e.target.calories.value)+parseFloat(count)
     }
+    
+    document.getElementById('calories-form').reset()
+    
     console.log(newCalories)
- 
+    
+    let reqObj = {
+        headers: {"Content-Type": "application/json"},
+        method: "PATCH",
+        body: JSON.stringify(newCalories)
+    }
+    
+    console.log(reqObj);
+
+    fetch(BASE_URL+e.target.characterId.value, reqObj)
+    // fetch(BASE_URL+e.target.characterId.value, reqObj)
+        .then(r => r.json())
+        .then(newData => document.getElementById('calorieSpan').innerText = newData.calories)
+        // .then(newData => console.log(newData))
+    
 }
 
-// let reqObj = {
-//     headers: {"Content-Type": "application/json"},
-//     method: "PATCH",
-//     body: JSON.stringify(newCalories)
-// }
 
 
 
