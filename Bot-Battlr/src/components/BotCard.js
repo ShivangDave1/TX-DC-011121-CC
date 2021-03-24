@@ -15,9 +15,9 @@ const BotCard = ({ bot, action, deleteBot }) => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => action(bot)}
       >
-        <div className="image">
+        {/* I moved the click event to the img instead of the entire card because when trying to delete it still shows specs which doesnt make sense to me */}
+        <div onClick={() => action(bot)} className="image">
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
         <div className="content">
