@@ -36,7 +36,7 @@ class BotsPage extends Component {
       // console.log("i ran o");
     }
     else {
-      alert("The Bot is in your service already 🦾. Click 'Go Back' to see the list of all bots")
+      alert("The Bot not available or is in your service already 🦾. Click 'Go Back' to see the list of all bots")
     }
   }
 
@@ -55,17 +55,27 @@ class BotsPage extends Component {
     fetch(GET_BOTS+id, request).then(res => res.json()).then(res => this.fetchData())
   }
 
+  //gets called when you click the bot
   specsOn = id => {
     // console.log(id);
     this.setState({specId: id})
   }
 
+  //gets called when you click "Go back" in botSpecs
   specsOff = () => {
     this.setState({specId: ""})
   }
 
+  //gets the bot to send to the spec view
   getSpecBot() {
     return this.state.bots.find(bot => bot.id === this.state.specId)
+  }
+
+  sortBots = value => {
+    let bots = [...this.state.bots]
+    // console.log(bots[1][value]);
+   bots.sort((bot1, bot2) => bot1[value] - bot2[value])
+   this.setState({bots})
   }
 
   render() {
@@ -73,7 +83,7 @@ class BotsPage extends Component {
     <YourBotArmy bots={this.getMyBots()} events={[this.removeFromMyBots, this.deleteABot]}/> 
     {
     this.state.specId === "" ? 
-    <BotCollection bots={this.state.bots} events={[this.specsOn, this.deleteABot]}/>
+    <BotCollection bots={this.state.bots} events={[this.specsOn, this.deleteABot]} sortBots={this.sortBots}/>
     :
     <BotSpecs bot={this.getSpecBot()} events={[this.specsOff, this.addToMyBots]} /> 
     }
