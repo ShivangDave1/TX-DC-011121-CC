@@ -12,7 +12,7 @@ class YourBotArmy extends Component {
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">
           <div className="row bot-army-row">
-            {this.props.botsList.map(bot => <BotCard bot={bot} />)}
+            {this.props.botsList.map(bot => <BotCard bot={bot} clickAction={this.props.clickToRemove} discharge={this.props.discharge} />)}
             Your Bot Army
           </div>
         </div>
