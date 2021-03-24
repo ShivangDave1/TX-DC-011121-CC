@@ -53,7 +53,7 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                console.log("connect this to a function that shows all bots")
+                props.events[0]()
               }
             >
               Go Back
@@ -61,9 +61,7 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
+                props.events[1](props.bot.id)
               }
             >
               Enlist
@@ -74,5 +72,19 @@ const BotSpecs = props => {
     </div>
   );
 };
+
+//for when I delete a bot
+BotSpecs.defaultProps = {
+  bot: {
+    armor: null,
+    avatar_url: null,
+    bot_class: null,
+    catchphrase: null,
+    created_at: null,
+    damage: null,
+    health: null,
+    id: null,
+  }
+}
 
 export default BotSpecs;

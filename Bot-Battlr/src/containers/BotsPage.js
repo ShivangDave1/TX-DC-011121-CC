@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import YourBotArmy, {  } from "./YourBotArmy";
 import BotCollection, {  } from "./BotCollection";
+import BotSpecs from "../components/BotSpecs";
 
 const BASE_URl = "http://localhost:6001/"
 const GET_BOTS = `${BASE_URl}bots/`
@@ -10,7 +11,9 @@ class BotsPage extends Component {
 
   state = {
     bots: [],
-    myBots: []
+    myBots: [],
+    // specs: false,
+    specId: ""
   }
 
   componentDidMount = () => {
@@ -29,8 +32,11 @@ class BotsPage extends Component {
 
   addToMyBots = id => {
     if (!this.state.myBots.includes(id)) {
-      this.setState(state => ({myBots: [...state.myBots, id]}))
+      this.setState(state => ({myBots: [...state.myBots, id], specId: ""}))
       // console.log("i ran o");
+    }
+    else {
+      alert("The Bot is in your service already 🦾. Click 'Go Back' to see the list of all bots")
     }
   }
 
@@ -46,14 +52,31 @@ class BotsPage extends Component {
         "CONTENT-TYPE": "APPLICATION/JSON"
       }
     }
-    // console.log(request);
     fetch(GET_BOTS+id, request).then(res => res.json()).then(res => this.fetchData())
+  }
+
+  specsOn = id => {
+    // console.log(id);
+    this.setState({specId: id})
+  }
+
+  specsOff = () => {
+    this.setState({specId: ""})
+  }
+
+  getSpecBot() {
+    return this.state.bots.find(bot => bot.id === this.state.specId)
   }
 
   render() {
     return (<div>
     <YourBotArmy bots={this.getMyBots()} events={[this.removeFromMyBots, this.deleteABot]}/> 
-    <BotCollection bots={this.state.bots} events={[this.addToMyBots, this.deleteABot]}/>
+    {
+    this.state.specId === "" ? 
+    <BotCollection bots={this.state.bots} events={[this.specsOn, this.deleteABot]}/>
+    :
+    <BotSpecs bot={this.getSpecBot()} events={[this.specsOff, this.addToMyBots]} /> 
+    }
     </div>);
   }
 }
