@@ -15,10 +15,10 @@ const BotCard = props => {
       <div
         className="ui card"
         key={props.bot.id}
-        onClick={() => console.log("add code to connect event listener")}
       >
         <div className="image">
-          <img alt="oh no!" src={props.bot.avatar_url} />
+          {/* {Spoke with Shivang about moving this click action from div card abo above to img - red x button click action was executing both click actions since it was contained within the div card above} */}
+          <img alt="oh no!" src={props.bot.avatar_url}  onClick={() => props.clickAction(props.bot.id)} />
         </div>
         <div className="content">
           <div className="header">
@@ -48,7 +48,7 @@ const BotCard = props => {
               <button
                 className="ui mini red button"
                 onClick={() =>
-                  console.log("add code to connect event listener")
+                  props.dischargeBot(props.bot.id)
                 }
               >
                 x
