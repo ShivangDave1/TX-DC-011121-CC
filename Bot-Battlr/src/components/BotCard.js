@@ -14,8 +14,9 @@ const BotCard = props => {
     <div className="ui column">
       <div
         className="ui card"
+        data-id= {props.bot.id}
         key={props.bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={(e) => props.events[0](+e.currentTarget.dataset.id)}
       >
         <div className="image">
           <img alt="oh no!" src={props.bot.avatar_url} />
@@ -48,7 +49,7 @@ const BotCard = props => {
               <button
                 className="ui mini red button"
                 onClick={() =>
-                  console.log("add code to connect event listener")
+                  props.events[1](props.bot.id)
                 }
               >
                 x
