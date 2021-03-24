@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
 import BotSpecs from '../components/BotSpecs'
+import SortBar from '../components/SortBar'
 
 let BASE_URL = 'http://localhost:6001/bots/'
 
@@ -11,7 +12,9 @@ class BotsPage extends Component {
   state = {
      bots: [],
      army: [],
-     selected: ''
+     selected: '',
+     sortBy: '',
+     filter: 'All'
   }
 
   componentDidMount = async () => {
@@ -65,10 +68,46 @@ class BotsPage extends Component {
     })
   }
 
+  setSort = (sortBy) => {
+    this.setState({ sortBy })
+  }
+
+  setFilter = (filter) => {
+    this.setState({ filter })
+  }
+
+  // sorts from greatest to least
+  sortBots = () => {
+    switch (this.state.sortBy) {
+      case 'health':
+        return this.state.bots.sort((a,b) => b.health-a.health)
+      case 'damage':
+        return this.state.bots.sort((a,b) => b.damage-a.damage) 
+      case 'armor':
+        return this.state.bots.sort((a,b) => b.armor-a.health) 
+      default:
+        return this.state.bots
+    }
+  }
+
+  // I just added this to get an array of all the bot classes so that i didnt have to go through the DB to figure them out
+  getFilterOtions = () => {
+    let options = ['All']
+    for(let x=0; x<this.state.bots.length; x++){
+      if(!options.includes(this.state.bots[x].bot_class)){
+        options.push(this.state.bots[x].bot_class)
+      }
+    }
+    return options
+  }
+
   render() {
+    let botsList = this.state.filter==='All' ? this.sortBots() : this.sortBots().filter(bot => bot.bot_class === this.state.filter)
+    let filterOptions = this.getFilterOtions()
     return <div>
       <YourBotArmy bots={this.state.army} action={this.removeFromArmy} deleteBot={this.deleteBot}/>
-      {this.state.selected==='' ? <BotCollection bots={this.state.bots} action={this.showSpecs} deleteBot={this.deleteBot}/> : <BotSpecs bot={this.state.selected} action={this.addToArmy} deSelect={this.deSelect} />}
+      {this.state.selected==='' ? <SortBar setSort={this.setSort} setFilter={this.setFilter} options={filterOptions}/> : null}
+      {this.state.selected==='' ? <BotCollection bots={botsList} action={this.showSpecs} deleteBot={this.deleteBot}/> : <BotSpecs bot={this.state.selected} action={this.addToArmy} deSelect={this.deSelect} />}
     </div>;
   }
 }

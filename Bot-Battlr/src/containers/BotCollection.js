@@ -9,7 +9,6 @@ class BotCollection extends Component {
       <div className="ui four column grid">
         <div className="row">
           {this.props.bots.map( bot => <BotCard bot={bot} key={bot.id} action={this.props.action} deleteBot={this.props.deleteBot}/>)}
-          Collection of all bots
         </div>
       </div>
     );
