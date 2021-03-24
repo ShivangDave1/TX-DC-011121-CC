@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 class BotsPage extends Component {
   //start here with your code for step one
   state = {
     bots: [], 
-    myBotIds: []
+    myBotIds: [], 
+    collection: true, 
+    currentBot: null
   }
 
   fetchBots = () => {
@@ -32,7 +35,8 @@ class BotsPage extends Component {
       let newIds = this.state.myBotIds
       newIds.push(id)
       this.setState({
-        myBotIds: newIds
+        myBotIds: newIds, 
+        collection: true
       })
     }
   }
@@ -42,13 +46,37 @@ class BotsPage extends Component {
       myBotIds: newBotIds
     })
   }
+  viewSingleBot = id => {
+    let bot = this.state.bots.find(bot => bot.id === id)
+    this.setState({
+      collection: !this.state.collection, 
+      currentBot: bot
+    })
+  }
+  renderBots = () => {
+    if (this.state.collection){
+      return <div>       
+      <YourBotArmy deleteBot={this.deleteBot} releaseBot={this.releaseBot} bots={this.state.bots} botIds={this.state.myBotIds} />
+      <BotCollection viewSingleBot={this.viewSingleBot} deleteBot={this.deleteBot} addBot={this.addBot} bots={this.state.bots}/>
+      </div>
+    }
+    else if (!this.state.collection) {
+      return <div>       
+        <YourBotArmy deleteBot={this.deleteBot} releaseBot={this.releaseBot} bots={this.state.bots} botIds={this.state.myBotIds} />
+        <BotSpecs addBot={this.addBot} viewSingleBot={this.viewSingleBot} bot={this.state.currentBot} key={this.state.currentBot.id} />
+      </div>
+    }
+  }
   
 
   render() {
-    return <div>       
-      <YourBotArmy deleteBot={this.deleteBot} releaseBot={this.releaseBot} bots={this.state.bots} botIds={this.state.myBotIds} />
-      <BotCollection deleteBot={this.deleteBot} addBot={this.addBot} bots={this.state.bots}/>
-      </div>;
+    
+    return this.renderBots()
+    
+    // <div>       
+    //   <YourBotArmy deleteBot={this.deleteBot} releaseBot={this.releaseBot} bots={this.state.bots} botIds={this.state.myBotIds} />
+    //   <BotCollection viewSingleBot={this.viewSingleBot} deleteBot={this.deleteBot} addBot={this.addBot} bots={this.state.bots}/>
+    //   </div>;
   }
 }
 
