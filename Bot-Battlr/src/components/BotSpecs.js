@@ -1,15 +1,19 @@
 import React from "react";
 
+//import needed Components from elsewhere
+import BotCard from "./BotCard";
+
 const botTypeClasses = {
   Assault: "icon military",
   Defender: "icon shield",
   Support: "icon plus circle",
   Medic: "icon ambulance",
   Witch: "icon magic",
-  Captain: "icon star"
+  Captain: "icon star",
+  id: "bot id",
 };
 
-const BotSpecs = props => {
+const BotSpecs = (botTypeClasses) => {
   return (
     <div className="ui segment">
       <div className="ui two column centered grid">
@@ -18,18 +22,18 @@ const BotSpecs = props => {
             <img
               alt="oh no!"
               className="ui medium circular image bordered"
-              src={props.bot.avatar_url}
+              src={botTypeClasses.bot.avatar_url}
             />
           </div>
           <div className="four wide column">
-            <h2>Name: {props.bot.name}</h2>
+            <h2>Name: {botTypeClasses.bot.name}</h2>
             <p>
               <strong>Catchphrase: </strong>
-              {props.bot.catchphrase}
+              {botTypeClasses.bot.catchphrase}
             </p>
             <strong>
-              Class: {props.bot.bot_class}
-              <i className={botTypeClasses[props.bot.bot_class]} />
+              Class: {botTypeClasses.bot.bot_class}
+              <i className={botTypeClasses[botTypeClasses.bot.bot_class]} />
             </strong>
             <br />
             <div className="ui segment">
@@ -37,15 +41,15 @@ const BotSpecs = props => {
                 <div className="row">
                   <div className="column">
                     <i className="icon large circular red heartbeat" />
-                    <strong>{props.bot.health}</strong>
+                    <strong>{botTypeClasses.bot.health}</strong>
                   </div>
                   <div className="column">
                     <i className="icon large circular yellow lightning" />
-                    <strong>{props.bot.damage}</strong>
+                    <strong>{botTypeClasses.bot.damage}</strong>
                   </div>
                   <div className="column">
                     <i className="icon large circular blue shield" />
-                    <strong>{props.bot.armor}</strong>
+                    <strong>{botTypeClasses.bot.armor}</strong>
                   </div>
                 </div>
               </div>

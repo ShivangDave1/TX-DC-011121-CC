@@ -1,47 +1,51 @@
 import React from "react";
 
-const botTypeClasses = {
-  Assault: "icon military",
-  Defender: "icon shield",
-  Support: "icon plus circle",
-  Medic: "icon ambulance",
-  Witch: "icon magic",
-  Captain: "icon star"
-};
+//import needed Components from elsewhere
+import BotSpecs from "./BotSpecs";
 
-const BotCard = props => {
+const BotCard = ({ botTypeClasses, clickAction }) => {
+  const botTypeClasses = {
+    Assault: "icon military",
+    Defender: "icon shield",
+    Support: "icon plus circle",
+    Medic: "icon ambulance",
+    Witch: "icon magic",
+    Captain: "icon star",
+    id: "bot id",
+  };
+
   return (
     <div className="ui column">
       <div
+        onClick={() => clickAction(botTypeClasses.id)}
         className="ui card"
-        key={props.bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        key={botTypeClasses.bot.id}
       >
         <div className="image">
-          <img alt="oh no!" src={props.bot.avatar_url} />
+          <img alt="oh no!" src={botTypeClasses.bot.avatar_url} />
         </div>
         <div className="content">
           <div className="header">
-            {props.bot.name}
-            <i className={botTypeClasses[props.bot.bot_class]} />
+            {botTypeClasses.bot.name}
+            <i className={botTypeClasses[botTypeClasses.bot.bot_class]} />
           </div>
           <div className="meta text-wrap">
-            <small>{props.bot.catchphrase}</small>
+            <small>{botTypeClasses.bot.catchphrase}</small>
           </div>
         </div>
         <div className="extra content">
           <span>
             <i className="icon heartbeat" />
-            {props.bot.health}
+            {botTypeClasses.bot.health}
           </span>
 
           <span>
             <i className="icon lightning" />
-            {props.bot.damage}
+            {botTypeClasses.bot.damage}
           </span>
           <span>
             <i className="icon shield" />
-            {props.bot.armor}
+            {botTypeClasses.bot.armor}
           </span>
           <span>
             <div className="ui center aligned segment basic">

@@ -1,20 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 
-class YourBotArmy extends Component {
-  //your bot army code here...
+//import needed Components from elsewhere
+import BotCard from "../components/BotCard";
 
-  render() {
-    return (
-      <div className="ui segment inverted olive bot-army">
-        <div className="ui five column grid">
-          <div className="row bot-army-row">
-            {/*...and here...*/}
-            Your Bot Army
-          </div>
+const YourBotArmy = ({ bots, removeFromArmy }) => {
+  return (
+    <div className="ui segment inverted olive bot-army">
+      <div className="ui five column grid">
+        <div className="row bot-army-row">
+          {bots.map((bot) => (
+            <BotCard clickAction={removeFromArmy} bot={bot} />
+          ))}
+          Your Bot Army
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default YourBotArmy;
