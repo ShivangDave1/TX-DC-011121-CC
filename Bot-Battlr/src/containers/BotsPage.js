@@ -10,7 +10,8 @@ class BotsPage extends Component {
   //start here with your code for step one
 
   // did all deliverables except adding ONLY ONE of each class
-  // but i think i didnt do filter by class as intended I only allowed on class option to be selected but i think it says to give the option to be multiple classes selected
+  // but i think i didnt do filter by class as intended I only allowed on 
+  // class option to be selected but i think it says to give the option to be multiple classes selected
 
 
   state = {
