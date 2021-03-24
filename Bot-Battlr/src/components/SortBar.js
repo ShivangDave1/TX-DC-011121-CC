@@ -15,3 +15,5 @@ const SortBar = ({sortBots}) => {
 }
 
 export default SortBar
+
+//stopped short of filtering based on type
