@@ -9,6 +9,10 @@ let BASE_URL = 'http://localhost:6001/bots/'
 class BotsPage extends Component {
   //start here with your code for step one
 
+  // did all deliverables except adding ONLY ONE of each class
+  // but i think i didnt do filter by class as intended I only allowed on class option to be selected but i think it says to give the option to be multiple classes selected
+
+
   state = {
      bots: [],
      army: [],
@@ -90,20 +94,9 @@ class BotsPage extends Component {
     }
   }
 
-  // I just added this to get an array of all the bot classes so that i didnt have to go through the DB to figure them out
-  getFilterOtions = () => {
-    let options = ['All']
-    for(let x=0; x<this.state.bots.length; x++){
-      if(!options.includes(this.state.bots[x].bot_class)){
-        options.push(this.state.bots[x].bot_class)
-      }
-    }
-    return options
-  }
-
   render() {
     let botsList = this.state.filter==='All' ? this.sortBots() : this.sortBots().filter(bot => bot.bot_class === this.state.filter)
-    let filterOptions = this.getFilterOtions()
+    let filterOptions = ['All', 'Medic', 'Assault', 'Defender', 'Witch', 'Captain', 'Support']
     return <div>
       <YourBotArmy bots={this.state.army} action={this.removeFromArmy} deleteBot={this.deleteBot}/>
       {this.state.selected==='' ? <SortBar setSort={this.setSort} setFilter={this.setFilter} options={filterOptions}/> : null}
